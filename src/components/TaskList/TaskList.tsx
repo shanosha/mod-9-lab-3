@@ -37,10 +37,12 @@ function TaskList({ tasks, onStatusChange, onDelete }: TaskListProps){
     }
 
     return (
-        <>
+        <div className="space-y-4">
             <TaskFilter onFilterChange={handleFilterChange} />
-            {taskElements}
-        </>
+            <div className="space-y-4">
+                {taskElements}
+            </div>
+        </div>
     )
 }
 

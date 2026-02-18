@@ -57,9 +57,10 @@ function App() {
     }
 
     return (
-        <>
-        <TaskList tasks={tasks} onStatusChange={handleStatusChange} onDelete={handleDelete} />
-        </>
+        <div className='m-8'>
+            <h1 className='text-3xl'>Task Manager</h1>
+            <TaskList tasks={tasks} onStatusChange={handleStatusChange} onDelete={handleDelete} />
+        </div>
     )
 
 }
