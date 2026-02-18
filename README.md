@@ -1,6 +1,8 @@
 # Task Manager
 
-This is a project in which.
+## Summary
+
+This project is a Task Management application that demonstrates dynamic list rendering, proper key usage, and conditional rendering.
 
 ## Reflections
 
