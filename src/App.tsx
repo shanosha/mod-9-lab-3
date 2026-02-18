@@ -18,7 +18,7 @@ const initialTasks : Task[] = [
         title: "Task 2",
         description: "Description 2",
         status: "in-progress",
-        priority: "low",
+        priority: "medium",
         dueDate: "2/15/2026"
     },
     {
@@ -26,7 +26,7 @@ const initialTasks : Task[] = [
         title: "Task 3",
         description: "Description 3",
         status: "completed",
-        priority: "low",
+        priority: "high",
         dueDate: "2/13/2026"
     }
 

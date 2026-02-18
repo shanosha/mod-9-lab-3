@@ -1,24 +1,47 @@
-import type { TaskStatus } from "../../types";
+import { useState } from "react";
 import type { TaskListProps } from "../../types";
+import type { TaskStatus } from "../../types";
 import { TaskItem } from "../TaskItem/TaskItem";
+import { TaskFilter } from "../TaskFilter/TaskFilter";
 
 function TaskList({ tasks, onStatusChange, onDelete }: TaskListProps){
+    
+    const [filters,setFilters] = useState({status: "", priority: ""});
 
-    function handleStatusChange (taskId: string, taskStatus: TaskStatus) {
+    const filteredTaskElements = tasks.filter((task) => {
+        let filteredTasks = false;
+        if(task.status.includes(filters.status) && task.priority.includes(filters.priority)) {filteredTasks = true}
+        return filteredTasks;
+    });
+
+    const taskElements = filteredTaskElements.map((task) =>
+        <TaskItem
+            key={task.id}
+            task={task}
+            onStatusChange={handleStatusChange}
+            onDelete={handleDelete}
+        />);
+
+    function handleStatusChange (taskId: string, taskStatus: TaskStatus): void {
         onStatusChange(taskId,taskStatus);
     }
 
-    function handleDelete (taskId: string) {
+    function handleDelete (taskId: string): void {
         onDelete(taskId);
     }
 
-    const taskElement = tasks.map((task) => <TaskItem key={task.id} task={task} onStatusChange={handleStatusChange} onDelete={handleDelete} />);
+    function handleFilterChange(changedFilter: object): void {
+        Object.entries(changedFilter).forEach(([key, value]) => {
+            setFilters({...filters, [key]: value});
+        });
+    }
 
     return (
         <>
-            {taskElement}
+            <TaskFilter onFilterChange={handleFilterChange} />
+            {taskElements}
         </>
     )
 }
 
-export {TaskList};
+export { TaskList };
