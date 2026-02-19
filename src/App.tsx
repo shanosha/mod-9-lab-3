@@ -34,7 +34,7 @@ const initialTasks : Task[] = [
 
 function App() {
 
-    const [tasks,setTasks] = useState (initialTasks);
+    const [tasks,setTasks] = useState<Task[]> (initialTasks);
 
     function handleStatusChange (taskId: string, taskStatus: TaskStatus) {
         setTasks((prev) => 
